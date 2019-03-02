@@ -8,7 +8,7 @@ const connection = mysql.createConnection({
   user: "root",
   // Your password
   password: "Dopamine1",
-  database: "ice_creamDB"
+  database: "playlist_db"
 });
 
 connection.connect(function(err) {
@@ -18,9 +18,14 @@ connection.connect(function(err) {
 });
 
 function readData() {
-  connection.query('select * from products', function(err, data){
+  connection.query('select * from songs', function(err, data){
     if(err) throw err;
     console.log(data);
+    for (var i = 0; i < data.length; i++){
+          if(data[i].genre === 'Synthwave') {
+               console.log(data[i].artist)
+         }
+    } 
     connection.end();
     console.log("Connection closed.");
   });

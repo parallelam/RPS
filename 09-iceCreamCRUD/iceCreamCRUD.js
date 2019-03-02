@@ -2,21 +2,18 @@ var mysql = require("mysql");
 
 var connection = mysql.createConnection({
   host: "localhost",
-
   // Your port; if not 3306
   port: 3306,
-
   // Your username
   user: "root",
-
   // Your password
-  password: "",
+  password: "Dopamine1",
   database: "ice_creamDB"
 });
 
 connection.connect(function(err) {
   if (err) throw err;
-  console.log("connected as id " + connection.threadId + "\n");
+  console.log("Connected with thread ID: " + connection.threadId + "\n");
   createProduct();
 });
 
@@ -30,12 +27,12 @@ function createProduct() {
       quantity: 50
     },
     function(err, res) {
+      if (err) throw err;
       console.log(res.affectedRows + " product inserted!\n");
       // Call updateProduct AFTER the INSERT completes
       updateProduct();
     }
   );
-
   // logs the actual query being run
   console.log(query.sql);
 }
@@ -53,12 +50,12 @@ function updateProduct() {
       }
     ],
     function(err, res) {
+      if (err) throw err;
       console.log(res.affectedRows + " products updated!\n");
       // Call deleteProduct AFTER the UPDATE completes
       deleteProduct();
     }
   );
-
   // logs the actual query being run
   console.log(query.sql);
 }
@@ -71,6 +68,7 @@ function deleteProduct() {
       flavor: "strawberry"
     },
     function(err, res) {
+      if (err) throw err;
       console.log(res.affectedRows + " products deleted!\n");
       // Call readProducts AFTER the DELETE completes
       readProducts();
@@ -85,5 +83,6 @@ function readProducts() {
     // Log all results of the SELECT statement
     console.log(res);
     connection.end();
+    console.log("Connection closed.");
   });
 }
