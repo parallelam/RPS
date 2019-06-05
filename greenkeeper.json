@@ -1,0 +1,15 @@
+{
+  "groups": {
+    "default": {
+      "packages": [
+        "06-iceCreamWithConnection/package.json",
+        "07-iceCreamReadData/package.json",
+        "08-playlistRead/Solved/package.json",
+        "09-iceCreamCRUD/package.json",
+        "10-playlistCRUD/Solved/package.json",
+        "10-playlistCRUD/Unsolved/package.json",
+        "11-GreatBay/Solved/package.json"
+      ]
+    }
+  }
+}
